@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Environment Variables (NEVER commit secrets)
+.env
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker
+*.log
+
+# Redis
+dump.rdb
+
+# Testing / Scratch
+test_ai.py
+test_celery.py
+test_webhook.py
+demo_review.py
+
+# Database
+*.db
+*.sqlite3
+
+# Distribution
+*.tar.gz
+*.whl
