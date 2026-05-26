@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewMind AI — AI-Powered Code Review Bot</title>
+    <meta name="description" content="Instant AI code reviews on every Pull Request. Catches security bugs, performance issues, and suggests improvements — powered by Google Gemini.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Animated background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+    <div class="bg-glow bg-glow--3"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar__inner">
+            <a href="#" class="navbar__logo">
+                <span class="navbar__logo-icon">🤖</span>
+                <span>ReviewMind<span class="text-gradient">AI</span></span>
+            </a>
+            <div class="navbar__links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#demo">Demo</a>
+                <a href="https://github.com/naitikraj9112-max/ReviewMind-AI" target="_blank" class="btn btn--ghost btn--sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="#install" class="btn btn--primary btn--sm">Install Free</a>
+            </div>
+            <button class="navbar__mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container hero__inner">
+            <div class="hero__badge">
+                <span class="pulse-dot"></span>
+                Powered by Google Gemini AI
+            </div>
+            <h1 class="hero__title">
+                AI Code Reviews<br>
+                <span class="text-gradient">In Seconds, Not Days.</span>
+            </h1>
+            <p class="hero__subtitle">
+                ReviewMind automatically reviews every Pull Request for security vulnerabilities, 
+                performance issues, bugs, and bad practices — and posts detailed feedback 
+                directly on your PR.
+            </p>
+            <div class="hero__cta">
+                <a href="#install" class="btn btn--primary btn--lg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Install on GitHub — Free
+                </a>
+                <a href="#demo" class="btn btn--ghost btn--lg">See Demo ↓</a>
+            </div>
+            <div class="hero__stats">
+                <div class="stat">
+                    <span class="stat__number" data-count="4">0</span>
+                    <span class="stat__label">Review Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__number">~15s</span>
+                    <span class="stat__label">Review Time</span>
+                </div>
+                <div class="stat">
+                    <span class="stat__number">100%</span>
+                    <span class="stat__label">Automated</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Four AI Agents.<br><span class="text-gradient">One Review.</span></h2>
+                <p class="section-subtitle">Every PR is analyzed by four specialized AI agents, each focused on a critical dimension of code quality.</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card" data-aos>
+                    <div class="feature-card__icon feature-card__icon--security">🔒</div>
+                    <h3 class="feature-card__title">Security Agent</h3>
+                    <p class="feature-card__desc">Detects SQL injection, XSS, hardcoded secrets, insecure authentication, SSRF, and path traversal vulnerabilities.</p>
+                    <div class="feature-card__tag">Critical</div>
+                </div>
+                <div class="feature-card" data-aos>
+                    <div class="feature-card__icon feature-card__icon--perf">⚡</div>
+                    <h3 class="feature-card__title">Performance Agent</h3>
+                    <p class="feature-card__desc">Finds blocking calls, memory leaks, redundant loops, inefficient database queries, and N+1 query patterns.</p>
+                    <div class="feature-card__tag">High</div>
+                </div>
+                <div class="feature-card" data-aos>
+                    <div class="feature-card__icon feature-card__icon--arch">🏗️</div>
+                    <h3 class="feature-card__title">Architecture Agent</h3>
+                    <p class="feature-card__desc">Identifies code smells, missing error handling, poor abstractions, tight coupling, and maintainability issues.</p>
+                    <div class="feature-card__tag">Medium</div>
+                </div>
+                <div class="feature-card" data-aos>
+                    <div class="feature-card__icon feature-card__icon--bug">🐛</div>
+                    <h3 class="feature-card__title">Bug Detective</h3>
+                    <p class="feature-card__desc">Catches logical errors, race conditions, off-by-one errors, null pointer issues, and edge case failures.</p>
+                    <div class="feature-card__tag">High</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Simple Setup</span>
+                <h2 class="section-title">Three Steps.<br><span class="text-gradient">Zero Config.</span></h2>
+            </div>
+            <div class="steps">
+                <div class="step" data-aos>
+                    <div class="step__number">01</div>
+                    <div class="step__content">
+                        <h3>Install on GitHub</h3>
+                        <p>Click "Install", pick your repos. That's it. No API keys, no config files, no YAML.</p>
+                    </div>
+                    <div class="step__visual">
+                        <div class="code-block">
+                            <div class="code-block__header">
+                                <span class="code-dot code-dot--red"></span>
+                                <span class="code-dot code-dot--yellow"></span>
+                                <span class="code-dot code-dot--green"></span>
+                            </div>
+                            <pre><code>✓ ReviewMind AI installed
+✓ Watching for Pull Requests
+✓ Ready to review</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="step" data-aos>
+                    <div class="step__number">02</div>
+                    <div class="step__content">
+                        <h3>Open a Pull Request</h3>
+                        <p>Push your code and create a PR like you normally would. ReviewMind activates automatically.</p>
+                    </div>
+                    <div class="step__visual">
+                        <div class="code-block">
+                            <div class="code-block__header">
+                                <span class="code-dot code-dot--red"></span>
+                                <span class="code-dot code-dot--yellow"></span>
+                                <span class="code-dot code-dot--green"></span>
+                            </div>
+                            <pre><code>$ git push origin feature/login
+$ gh pr create --title "Add login"
+
+→ Webhook triggered
+→ AI review in progress...</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="step" data-aos>
+                    <div class="step__number">03</div>
+                    <div class="step__content">
+                        <h3>Get Instant Review</h3>
+                        <p>Within ~15 seconds, a detailed AI review comment appears on your PR with issues, fixes, and suggestions.</p>
+                    </div>
+                    <div class="step__visual">
+                        <div class="code-block code-block--review">
+                            <div class="code-block__header">
+                                <span class="code-dot code-dot--red"></span>
+                                <span class="code-dot code-dot--yellow"></span>
+                                <span class="code-dot code-dot--green"></span>
+                                <span class="code-block__title">PR Comment</span>
+                            </div>
+                            <pre><code>🤖 <strong>ReviewMind AI Code Review</strong>
+
+Risk Level: 🔴 Critical
+Issues Found: 12
+
+| # | Severity | Issue           |
+|---|----------|-----------------|
+| 1 | 🔴 Crit  | SQL Injection   |
+| 2 | 🟠 High  | Hardcoded Key   |
+| 3 | 🟡 Med   | Missing Logging |
+
+💡 Fix: Use parameterized queries</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Live Preview</span>
+                <h2 class="section-title">See What a Review<br><span class="text-gradient">Actually Looks Like.</span></h2>
+                <p class="section-subtitle">This is a real review comment posted by ReviewMind AI on a Pull Request with intentional vulnerabilities.</p>
+            </div>
+            <div class="demo__card" data-aos>
+                <div class="demo__header">
+                    <div class="demo__avatar">🤖</div>
+                    <div>
+                        <strong>reviewmind-ai</strong> <span class="demo__badge">bot</span>
+                        <span class="demo__time">commented 15 seconds ago</span>
+                    </div>
+                </div>
+                <div class="demo__body">
+                    <h2>🤖 ReviewMind AI Code Review</h2>
+                    <blockquote>
+                        <strong>Overall Risk Level:</strong> 🔴 Critical<br>
+                        <strong>Verdict:</strong> This PR contains multiple critical security vulnerabilities that must be fixed before merging.
+                    </blockquote>
+                    <h3>📊 Summary</h3>
+                    <p><strong>Total Issues Found:</strong> 12</p>
+                    <p>🔴 Critical: <strong>3</strong> | 🟠 High: <strong>4</strong> | 🟡 Medium: <strong>3</strong> | 🟢 Low: <strong>2</strong></p>
+                    <h3>🔍 Issues Found</h3>
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>Severity</th><th>Category</th><th>File</th><th>Issue</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>🔴 Critical</td><td>🔒 Security</td><td><code>auth.py</code></td><td>SQL Injection in login query</td></tr>
+                            <tr><td>2</td><td>🔴 Critical</td><td>🔒 Security</td><td><code>config.py</code></td><td>Hardcoded API key exposed</td></tr>
+                            <tr><td>3</td><td>🟠 High</td><td>⚡ Performance</td><td><code>main.py</code></td><td>Blocking loop with 10M iterations</td></tr>
+                            <tr><td>4</td><td>🟠 High</td><td>🐛 Bug</td><td><code>auth.py</code></td><td>Credentials sent via GET request</td></tr>
+                            <tr><td>5</td><td>🟡 Medium</td><td>🏗️ Architecture</td><td><code>main.py</code></td><td>Missing input validation</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>🚀 Future Enhancements</h3>
+                    <table>
+                        <thead>
+                            <tr><th>#</th><th>Priority</th><th>Enhancement</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>🔵 Strongly Recommended</td><td>Use parameterized database queries</td></tr>
+                            <tr><td>2</td><td>🟣 Recommended</td><td>Add rate limiting to login endpoint</td></tr>
+                            <tr><td>3</td><td>⚪ Nice-to-have</td><td>Add request logging middleware</td></tr>
+                        </tbody>
+                    </table>
+                    <h3>🛠️ Major Bugs & How to Fix Them</h3>
+                    <p><strong>1. 🔴 SQL Injection in login query</strong></p>
+                    <p><strong>File:</strong> <code>auth.py</code> | <strong>Line:</strong> 8</p>
+                    <blockquote>User input is directly concatenated into the SQL query string, enabling SQL injection attacks.</blockquote>
+                    <p><strong>💡 Fix:</strong> Use parameterized queries: <code>cursor.execute("SELECT * FROM users WHERE username=?", (username,))</code></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Install -->
+    <section class="cta" id="install">
+        <div class="container">
+            <div class="cta__card">
+                <h2 class="cta__title">Start Getting AI Reviews<br><span class="text-gradient">On Every Pull Request.</span></h2>
+                <p class="cta__subtitle">Free and open source. Install in 30 seconds.</p>
+                <a href="https://github.com/apps/reviewmind-ai/installations/new" class="btn btn--primary btn--xl" id="install-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Install on GitHub — It's Free
+                </a>
+                <p class="cta__note">Open source · No credit card · Works with any repo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__left">
+                <span class="navbar__logo-icon">🤖</span>
+                <span>ReviewMind<span class="text-gradient">AI</span></span>
+            </div>
+            <div class="footer__links">
+                <a href="https://github.com/naitikraj9112-max/ReviewMind-AI" target="_blank">GitHub</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">Docs</a>
+            </div>
+            <div class="footer__right">
+                Built with ❤️ using FastAPI + Gemini AI
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
