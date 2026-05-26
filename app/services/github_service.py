@@ -1,12 +1,29 @@
-from github import Github
+from github import Github, Auth
 from app.core.config import settings
+from app.services.github_app_auth import get_installation_token, is_github_app_configured
+
 
 class GitHubService:
-    def __init__(self):
-        # We will use PAT for simplicity in the MVP.
-        if not settings.GITHUB_PAT:
-            raise ValueError("GITHUB_PAT is not set.")
-        self.g = Github(settings.GITHUB_PAT)
+    def __init__(self, installation_id: int = None):
+        """
+        Initialize GitHub client.
+        
+        Priority:
+        1. If installation_id provided and GitHub App configured → use App token
+        2. Else if GITHUB_PAT is set → use PAT (local dev / self-hosted)
+        3. Else → raise error
+        """
+        if installation_id and is_github_app_configured():
+            # GitHub App mode — generate token for this installation
+            token = get_installation_token(installation_id)
+            self.g = Github(auth=Auth.Token(token))
+            self.mode = "github_app"
+        elif settings.GITHUB_PAT:
+            # PAT mode — for local dev or self-hosted
+            self.g = Github(auth=Auth.Token(settings.GITHUB_PAT))
+            self.mode = "pat"
+        else:
+            raise ValueError("Either GITHUB_PAT or GitHub App credentials must be configured.")
 
     def get_pr_diff(self, repo_full_name: str, pr_number: int) -> list[tuple[str, str]]:
         """

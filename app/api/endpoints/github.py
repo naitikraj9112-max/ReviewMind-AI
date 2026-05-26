@@ -209,16 +209,16 @@ def format_review_comment(review_data: dict) -> str:
     return "\n".join(lines)
 
 
-def run_review(repo_full_name: str, pr_number: int):
+def run_review(repo_full_name: str, pr_number: int, installation_id: int = None):
     """
     Runs the full AI review pipeline directly:
     1. Fetch PR diff from GitHub
     2. Send to Gemini for analysis
     3. Format and post review comment back to the PR
     """
-    print(f"[Review] Starting review for {repo_full_name} PR#{pr_number}", flush=True)
+    print(f"[Review] Starting review for {repo_full_name} PR#{pr_number} (mode={'app' if installation_id else 'pat'})", flush=True)
     try:
-        github_service = GitHubService()
+        github_service = GitHubService(installation_id=installation_id)
         ai_service = AIService()
 
         # 1. Fetch diffs
@@ -281,10 +281,11 @@ async def github_webhook(request: Request):
     if "pull_request" in payload and payload.get("action") in ["opened", "synchronize", "reopened"]:
         pr_number = payload["pull_request"]["number"]
         repo_full_name = payload["repository"]["full_name"]
+        installation_id = payload.get("installation", {}).get("id")
         
         # Run review in a separate thread — fully independent of request lifecycle
-        print(f"[Webhook] Received PR event for {repo_full_name} PR#{pr_number} (action={payload['action']})", flush=True)
-        thread = threading.Thread(target=run_review, args=(repo_full_name, pr_number), daemon=True)
+        print(f"[Webhook] Received PR event for {repo_full_name} PR#{pr_number} (action={payload['action']}, install={installation_id})", flush=True)
+        thread = threading.Thread(target=run_review, args=(repo_full_name, pr_number, installation_id), daemon=True)
         thread.start()
         return {"status": "Review started"}
         
