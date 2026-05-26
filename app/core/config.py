@@ -23,4 +23,22 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
+    @property
+    def get_private_key(self) -> str:
+        """
+        Fixes newline issues from cloud environments (like Render)
+        where multiline strings get flattened or escaped.
+        """
+        if not self.GITHUB_APP_PRIVATE_KEY:
+            return ""
+        # Fix literal '\n' strings that might have been escaped
+        key = self.GITHUB_APP_PRIVATE_KEY.replace("\\n", "\n")
+        # If it was completely flattened without any \n or \\n (rare but happens)
+        if "-----BEGIN RSA PRIVATE KEY-----" in key and "\n" not in key:
+            key = key.replace("-----BEGIN RSA PRIVATE KEY-----", "-----BEGIN RSA PRIVATE KEY-----\n")
+            key = key.replace("-----END RSA PRIVATE KEY-----", "\n-----END RSA PRIVATE KEY-----")
+            # The middle part is base64, which usually wraps at 64 chars, but jwt.decode
+            # handles it fine as a single long line as long as the headers have newlines.
+        return key
+
 settings = Settings()

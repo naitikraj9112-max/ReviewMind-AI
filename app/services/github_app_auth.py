@@ -21,7 +21,7 @@ def _generate_jwt() -> str:
         "exp": now + (10 * 60),   # Expires in 10 minutes
         "iss": settings.GITHUB_APP_ID,
     }
-    return jwt.encode(payload, settings.GITHUB_APP_PRIVATE_KEY, algorithm="RS256")
+    return jwt.encode(payload, settings.get_private_key, algorithm="RS256")
 
 
 def get_installation_token(installation_id: int) -> str:
